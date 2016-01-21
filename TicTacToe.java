@@ -1,4 +1,4 @@
-/*@author Anwar Saleeby
+/**@author Anwar Saleeby
  *@version final
  *@contribs none
  *@date 7/27/15
@@ -9,6 +9,8 @@
  *  
  *  
  */
+import java.util.concurrent.locks.*;
+
 import java.util.ArrayList;
 import java.util.List;
 import javafx.application.Application;
@@ -39,6 +41,7 @@ public class TicTacToe extends Application
 	private Tile[][] board = new Tile [3][3];
 	private List<Combo> combos = new ArrayList<>();
 	private Pane base = new Pane();
+	
 	
 	/*
 	 * Base constructor to create the application frame.
@@ -122,8 +125,8 @@ public class TicTacToe extends Application
 	}
 	
 	/*
-	 *  Class for determining whether or not you have won the game.
-	 */
+ *  Class for determining whether or not you have won the game.
+ */
 	private class Combo
 	{
 		private Tile[] tiles;
@@ -148,10 +151,13 @@ public class TicTacToe extends Application
 	{
 		private Text text = new Text();
 		
-		public Tile()
+		public  Tile()
 		{
+			
 			Rectangle border = new Rectangle(200,200);
-			border.setFill(null);
+			
+			
+			border.setFill(Color.AZURE);
 			border.setStroke(Color.GREEN);
 			
 			text.setFont(Font.font(72));
@@ -159,8 +165,13 @@ public class TicTacToe extends Application
 			setAlignment(Pos.CENTER);
 			getChildren().addAll(border, text); 
 			
+			
+			
+			
+			
 			setOnMouseClicked(event -> {
 				if(!abletoplay)
+					
 					return; 
 				
 				if(event.getButton() == MouseButton.PRIMARY)
@@ -209,7 +220,7 @@ public class TicTacToe extends Application
 		}
 		
 	}
-	
+
 	
 	public static void main(String[] args)
 	{
